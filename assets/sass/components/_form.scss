@@ -1,5 +1,5 @@
 ///
-/// Future Imperfect by HTML5 UP
+/// Hyperspace by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -9,35 +9,46 @@
 	form {
 		margin: 0 0 _size(element-margin) 0;
 
-		&.search {
-			@include icon;
-			position: relative;
+		.field {
+			margin: 0 0 (_size(element-margin) * 0.5) 0;
 
-			&:before {
-				color: _palette(fg-light);
-				content: '\f002';
-				display: block;
-				height: _size(element-height);
-				left: 0;
-				line-height: _size(element-height);
-				position: absolute;
-				text-align: center;
-				top: 0;
-				width: 2.5em;
+			&.half {
+				width: 50%;
+				float: left;
+				padding: 0 0 0 0.75em;
+
+				&.first {
+					padding: 0 0.75em 0 0;
+				}
 			}
+		}
 
-			> input:first-child {
-				padding-left: 2.5em;
+		> .actions {
+			margin: _size(element-margin) 0 0 0 !important;
+		}
+
+		@include breakpoint(small) {
+			.field {
+				&.half {
+					width: 100%;
+					float: none;
+					padding: 0;
+
+					&.first {
+						padding: 0;
+					}
+				}
 			}
 		}
 	}
 
 	label {
 		color: _palette(fg-bold);
-		display: block;
-		font-size: 0.9em;
 		font-weight: _font(weight-bold);
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
+		line-height: 1.5;
+		margin: 0 0 (_size(element-margin) * 0.35) 0;
+		display: block;
+		font-size: 1.1em;
 	}
 
 	input[type="text"],
@@ -48,9 +59,9 @@
 	textarea {
 		@include vendor('appearance', 'none');
 		background: _palette(border-bg);
+		border-radius: _size(border-radius);
 		border: none;
-		border: solid 1px _palette(border);
-		border-radius: 0;
+		border: solid _size(border-width) _palette(border);
 		color: inherit;
 		display: block;
 		outline: 0;
@@ -63,8 +74,8 @@
 		}
 
 		&:focus {
-			border-color: _palette(accent);
-			box-shadow: inset 0 0 0 1px _palette(accent);
+			border-color: _palette(fg-bold);
+			box-shadow: 0 0 0 _size(border-width) _palette(fg-bold);
 		}
 	}
 
@@ -92,6 +103,13 @@
 		}
 	}
 
+	select {
+		option {
+			background-color: _palette(bg);
+			color: _palette(fg-bold);
+		}
+	}
+
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
@@ -101,6 +119,10 @@
 
 	textarea {
 		padding: 0.75em 1em;
+
+		body.is-ie & {
+			min-height: 10em;
+		}
 	}
 
 	input[type="checkbox"],
@@ -126,7 +148,8 @@
 
 			&:before {
 				background: _palette(border-bg);
-				border: solid 1px _palette(border);
+				border-radius: _size(border-radius);
+				border: solid _size(border-width) _palette(border);
 				content: '';
 				display: inline-block;
 				height: (_size(element-height) * 0.6);
@@ -143,15 +166,15 @@
 			&:before {
 				background: _palette(fg-bold);
 				border-color: _palette(fg-bold);
-				color: _palette(bg);
+				color: _palette(accent3);
 				content: '\f00c';
 			}
 		}
 
 		&:focus + label {
 			&:before {
-				border-color: _palette(accent);
-				box-shadow: 0 0 0 1px _palette(accent);
+				border-color: _palette(fg-bold);
+				box-shadow: 0 0 0 _size(border-width) _palette(fg-bold);
 			}
 		}
 	}
@@ -159,6 +182,7 @@
 	input[type="checkbox"] {
 		& + label {
 			&:before {
+				border-radius: _size(border-radius);
 			}
 		}
 	}
